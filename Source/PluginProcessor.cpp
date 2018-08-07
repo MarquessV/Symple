@@ -27,17 +27,17 @@ SympleAudioProcessor::SympleAudioProcessor()
                        )
 #endif
 {
-    synths.add(&synth1);
-    synths.add(&synth2);
-    for (auto& synth : synths)
+    for (int i = 0; i < 2; ++i)
     {
+        SympleSynth* synth = new SympleSynth();
         synth->clearVoices();
-        for(int i = 0; i < 5; ++i)
+        for(int j = 0; j < 5; ++j)
         {
             synth->addVoice(new SympleSynthVoice());
         }
         synth->clearSounds();
         synth->addSound(new SympleSynthSound());
+        synths.add(synth);
     }
 }
 

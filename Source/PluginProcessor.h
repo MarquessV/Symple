@@ -65,7 +65,7 @@ private:
     SympleSynth synth1;
     SympleSynth synth2;
 
-    Array<SympleSynth*> synths;
+    OwnedArray<SympleSynth> synths;
 
     double lastSampleRate;
 };
