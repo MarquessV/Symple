@@ -2,3 +2,4 @@
 .DS_store
 Builds/MacOSX/build/
 xcuserdata/
+build
