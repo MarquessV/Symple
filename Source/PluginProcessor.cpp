@@ -27,11 +27,13 @@ SympleAudioProcessor::SympleAudioProcessor()
                        )
 #endif
 {
-    for (int i = 0; i < 2; ++i)
+    numSynths = 2;
+    numVoices = 7;
+    for (int i = 0; i < numSynths; ++i)
     {
         SympleSynth* synth = new SympleSynth();
         synth->clearVoices();
-        for(int j = 0; j < 5; ++j)
+        for(int j = 0; j < numVoices; ++j)
         {
             synth->addVoice(new SympleSynthVoice());
         }
@@ -151,10 +153,17 @@ bool SympleAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) c
 
 void SympleAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
 {
+    AudioBuffer<float> tempBuffer(buffer.getNumChannels(), buffer.getNumSamples());
     buffer.clear();
-    for (auto& synth : synths)
+    for (int i = 0; i < numSynths; ++i)
     {
-        synth->renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
+        tempBuffer.clear();
+        synths[i]->renderNextBlock(tempBuffer, midiMessages, 0, buffer.getNumSamples());
+        for(int channel = 0; channel < buffer.getNumChannels(); ++channel)
+        {
+            buffer.addFrom(channel, 0, tempBuffer.getReadPointer(channel, 0), tempBuffer.getNumSamples());
+        }
+
     }
 }
 

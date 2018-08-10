@@ -14,8 +14,21 @@
 
 #include "Oscillator.h"
 
+class SympleSynthParams
+{
+  public:
+    float amplitude = 0.5;
+};
+
 class SympleSynth : public Synthesiser
 {
   public:
-    void setWaveForm(Oscillator::waveForms wave);
+    void renderNextBlock (AudioBuffer<float>& outputAudio, const MidiBuffer& inputMidi, int startSample, int numSamples);
+
+    void setWaveForm (Oscillator::waveForms wave);
+
+    void setParams (float amplitude);
+  
+  private:
+    SympleSynthParams params;
 };

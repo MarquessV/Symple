@@ -3,11 +3,16 @@
 <JUCERPROJECT name="Symple" projectType="audioplug" buildStandalone="1" jucerVersion="5.3.1"
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               pluginManufacturer="MarquessV" aaxIdentifier="com.MarquessV.Symple"
-              cppLanguageStandard="17" pluginFormats="buildAU,buildStandalone,buildVST"
+              cppLanguageStandard="17" pluginFormats="buildVST,buildAU,buildStandalone"
               buildVST="1" buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0"
               buildAAX="0" enableIAA="0">
   <MAINGROUP id="wrPITM" name="Symple">
     <GROUP id="{79BA9D49-E5A9-738D-9646-D826C5783B12}" name="Source">
+      <GROUP id="{82F04D23-DE37-66DF-07B8-60F0F0ED540E}" name="Visual">
+        <FILE id="c5aGlE" name="SympleColors.cpp" compile="1" resource="0"
+              file="Source/SympleColors.cpp"/>
+        <FILE id="gr9rSX" name="SympleColors.h" compile="0" resource="0" file="Source/SympleColors.h"/>
+      </GROUP>
       <GROUP id="{5FF99596-DB54-081D-B541-CE41FBEDBB2A}" name="Synth">
         <FILE id="qcMUsQ" name="WaveTables.h" compile="0" resource="0" file="Source/WaveTables.h"/>
         <FILE id="IymwnD" name="WaveTables.cpp" compile="1" resource="0" file="Source/WaveTables.cpp"/>
@@ -60,6 +65,25 @@
         <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
+    <CLION targetFolder="Builds/CLion" clionXcodeEnabled="1">
+      <MODULEPATHS>
+        <MODULEPATH id="juce_video" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../JUCE/modules"/>
+      </MODULEPATHS>
+    </CLION>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>

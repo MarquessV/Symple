@@ -28,6 +28,7 @@ class SympleSynthVoice : public SynthesiserVoice
 
   private:
     Oscillator osc;
+
     float frequency;
     float amp;
 };

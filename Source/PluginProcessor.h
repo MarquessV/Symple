@@ -58,6 +58,7 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    OwnedArray<SympleSynth> synths;
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SympleAudioProcessor)
@@ -65,7 +66,9 @@ private:
     SympleSynth synth1;
     SympleSynth synth2;
 
-    OwnedArray<SympleSynth> synths;
 
     double lastSampleRate;
+
+    int numSynths;
+    int numVoices;
 };
