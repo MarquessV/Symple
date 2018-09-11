@@ -28,7 +28,7 @@ class SympleSynth : public Synthesiser
     void setWaveForm (Oscillator::waveForms wave);
 
     void setParams (float amplitude);
-  
+
   private:
     SympleSynthParams params;
 };

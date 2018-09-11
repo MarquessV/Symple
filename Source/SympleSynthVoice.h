@@ -12,12 +12,14 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+#include "Envelope.h"
 #include "Oscillator.h"
 #include "SympleSynthSound.h"
 
 class SympleSynthVoice : public SynthesiserVoice
 {
   public:
+    SympleSynthVoice();
     bool canPlaySound (SynthesiserSound* sound) override;
     void startNote (int midiNoteNumber, float velocity, SynthesiserSound *sound, int currentPitchWheelPosition) override;
     void stopNote (float velocity, bool allowTailOff) override;
@@ -28,6 +30,8 @@ class SympleSynthVoice : public SynthesiserVoice
 
   private:
     Oscillator osc;
+
+    Envelope ampEnv;
 
     float frequency;
     float amp;

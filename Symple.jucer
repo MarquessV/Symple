@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT name="Symple" projectType="audioplug" buildStandalone="1" jucerVersion="5.3.1"
+<JUCERPROJECT name="Symple" projectType="audioplug" buildStandalone="1" jucerVersion="5.3.2"
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               pluginManufacturer="MarquessV" aaxIdentifier="com.MarquessV.Symple"
               cppLanguageStandard="17" pluginFormats="buildVST,buildAU,buildStandalone"
               buildVST="1" buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0"
-              buildAAX="0" enableIAA="0">
+              buildAAX="0" enableIAA="0" id="VcKgUi">
   <MAINGROUP id="wrPITM" name="Symple">
     <GROUP id="{79BA9D49-E5A9-738D-9646-D826C5783B12}" name="Source">
       <GROUP id="{82F04D23-DE37-66DF-07B8-60F0F0ED540E}" name="Visual">
@@ -36,6 +36,10 @@
       <FILE id="sS5Ppa" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="DtZo99" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+    <GROUP id="{CEE13296-5514-9181-0532-0F1A20413E6E}" name="DSP">
+      <FILE id="Ewm2Q6" name="Envelope.cpp" compile="1" resource="0" file="Source/Envelope.cpp"/>
+      <FILE id="HH8jdR" name="Envelope.h" compile="0" resource="0" file="Source/Envelope.h"/>
     </GROUP>
   </MAINGROUP>
   <LIVE_SETTINGS>
