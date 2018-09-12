@@ -12,7 +12,7 @@
 #include <vector>
 #include "Envelope.h"
 
-Envelope::Envelope (double newSampleRate) : minLevel (0.0001),
+Envelope::Envelope (double newSampleRate) : minLevel (0.0001),    // multiplier would not work with a 0 level.
                                             currentState (off),
                                             currentLevel (minLevel),
                                             multiplier (1.0),
@@ -20,11 +20,11 @@ Envelope::Envelope (double newSampleRate) : minLevel (0.0001),
                                             currentSampleIndex (0),
                                             nextStateSampleIndex (0)
 {
-  stateValue[off] = 0.0;
-  stateValue[attack] = 0.5;
-  stateValue[decay] = 0.5;
-  stateValue[sustain] = 0.1;
-  stateValue[release] = 1.0;
+  stateValue[EnvelopeState::off] = 0.0;      // For off the value is irrelevant (a level of 0.0 is hardcoded is enterState())
+  stateValue[EnvelopeState::attack] = 0.5;   // For attack, decay, release, this is the length of the state in seconds.
+  stateValue[EnvelopeState::decay] = 0.5;  
+  stateValue[EnvelopeState::sustain] = 0.1;  // For sustain this is the level to maintain.
+  stateValue[EnvelopeState::release] = 1.0;
 }
 
 double Envelope::getNextSample()
@@ -81,11 +81,26 @@ void Envelope::enterState (EnvelopeState newState)
   }
 }
 
-void Envelope::setSampleRate (double newSampleRate)
+void Envelope::setParams (double attack, double decay, double sustain, double release)
 {
-  sampleRate = newSampleRate;
+  stateValue[EnvelopeState::attack] = attack;
+  stateValue[EnvelopeState::decay] = decay;
+  stateValue[EnvelopeState::sustain] = sustain;
+  stateValue[EnvelopeState::release] = release;
 }
 
+void Envelope::setSampleRate (double newSampleRate)
+{
+  sampleRate = newSampleRate; // TODO - recalculation or a reset is probably needed here.
+}
+
+/*
+ * If x is the current level, and y is the target level and s is the number of samples we want to transition from x to y then:
+ *    y - x = the total distance to travel and (y - x) / s = the distance needed to travel each sample.
+ * Notice that, if x > y then we would get a negative value n. We don't want a negative multiplier, rather, if we want to decrease the level,
+ * we need 1.0 - n. Finally, our ears perceive volume changes logarithmically so it is necessary to take the natural log of both levels
+ * before performing the calculation.
+ */
 void Envelope::calculateMultiplier (double startLevel, double endLevel, unsigned long long lengthInSamples)
 {
   multiplier = 1.0 + (log (endLevel) - log (startLevel)) / (lengthInSamples);

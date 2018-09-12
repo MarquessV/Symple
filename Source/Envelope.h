@@ -30,6 +30,7 @@ class Envelope
     EnvelopeState getState() const;
     void enterState (EnvelopeState newState);
     void setSampleRate (double newSampleRate);
+    void setParams(double attack, double decay, double sustain, double release);
     const double minLevel;
 
   private:
