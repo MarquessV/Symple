@@ -27,12 +27,11 @@ class SympleSynthVoice : public SynthesiserVoice
     void controllerMoved (int controllerNumber, int newControllerValue) override;
     void renderNextBlock (AudioBuffer<float> &outputBuffer, int startSample, int numSamples) override;
     void setWaveForm (Oscillator::waveForms wave);
+    void setEnvelopeParams (double attack, double decay, double sustain, double release);
 
   private:
-    Oscillator osc;
-
     Envelope ampEnv;
-
+    Oscillator osc;
     float frequency;
     float amp;
 };

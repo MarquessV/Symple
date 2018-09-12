@@ -26,7 +26,16 @@ void SympleSynth::setWaveForm (Oscillator::waveForms wave)
   }
 }
 
-void SympleSynth::setParams (float amplitude)
+void SympleSynth::setAmplitude (float amplitude)
 {
   params.amplitude = amplitude;
+}
+
+void SympleSynth::setEnvelopeParams (double attack, double decay, double sustain, double release)
+{
+  for (int i = 0; i < getNumVoices(); ++i) 
+  {
+    SympleSynthVoice* voice = dynamic_cast<SympleSynthVoice*> (getVoice(i));
+    voice->setEnvelopeParams(attack, decay, sustain, release);
+  }
 }

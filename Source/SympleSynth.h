@@ -14,9 +14,8 @@
 
 #include "Oscillator.h"
 
-class SympleSynthParams
+struct SympleSynthParams
 {
-  public:
     float amplitude = 0.5;
 };
 
@@ -27,7 +26,9 @@ class SympleSynth : public Synthesiser
 
     void setWaveForm (Oscillator::waveForms wave);
 
-    void setParams (float amplitude);
+    void setAmplitude (float amplitude);
+
+    void setEnvelopeParams(double attack, double decay, double sustain, double release);
 
   private:
     SympleSynthParams params;

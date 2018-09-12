@@ -70,6 +70,10 @@ void SympleSynthVoice::setWaveForm (Oscillator::waveForms wave)
   osc.setWaveForm(wave);
 }
 
+void SympleSynthVoice::setEnvelopeParams (double attack, double decay, double sustain, double release)
+{
+  ampEnv.setParams(attack, decay, sustain, release);
+}
 
 bool SympleSynthVoice::canPlaySound (SynthesiserSound *sound)
 { 

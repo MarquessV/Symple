@@ -44,4 +44,16 @@ private:
 
     ComboBox osc1WaveForm;
     ComboBox osc2WaveForm;
+
+    Slider osc1AttackSlider;
+    Slider osc2AttackSlider;
+
+    Slider osc1DecaySlider;
+    Slider osc2DecaySlider;
+
+    Slider osc1SustainSlider;
+    Slider osc2SustainSlider;
+
+    Slider osc1ReleaseSlider;
+    Slider osc2ReleaseSlider;
 };
