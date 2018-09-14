@@ -68,9 +68,6 @@ void OscPanel::resized()
 
     auto quarter = area / 4;
 
-    int comboBoxWidth = area.getWidth() / 4;
-    int comboBoxHeight = area.getHeight() / 4;
-    int rotaryWidth = area.getWidth() / 4;
     waveForm.setBounds(quarter);
     waveForm.setTopLeftPosition(padding, padding);
 

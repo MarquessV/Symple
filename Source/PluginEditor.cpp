@@ -11,6 +11,8 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+#include "SympleColors.h"
+
 //==============================================================================
 SympleAudioProcessorEditor::SympleAudioProcessorEditor (SympleAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
@@ -113,11 +115,10 @@ SympleAudioProcessorEditor::~SympleAudioProcessorEditor()
 void SympleAudioProcessorEditor::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+    g.fillAll (SympleColors::background);
 
     g.setColour (Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), Justification::centred, 1);
+    g.setFont (12.0f);
 }
 
 void SympleAudioProcessorEditor::resized()
