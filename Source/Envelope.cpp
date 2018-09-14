@@ -20,7 +20,7 @@ Envelope::Envelope (double newSampleRate) : minLevel (0.0001),    // multiplier 
                                             currentSampleIndex (0),
                                             nextStateSampleIndex (0)
 {
-  stateValue[EnvelopeState::off] = 0.0;      // For off the value is irrelevant (a level of 0.0 is hardcoded is enterState())
+  stateValue[EnvelopeState::off] = 0.0;      // For off the value is irrelevant (a level of 0.0 is hardcoded in enterState())
   stateValue[EnvelopeState::attack] = 0.5;   // For attack, decay, release, this is the length of the state in seconds.
   stateValue[EnvelopeState::decay] = 0.5;  
   stateValue[EnvelopeState::sustain] = 0.1;  // For sustain this is the level to maintain.

@@ -15,7 +15,7 @@
 class SympleColors
 {
   public:
-    static JUCE_API const Colour background, foreground, blue;
+    static JUCE_API const Colour background, foreground, tint, blue, dark_blue, orange;
 
   private:
     SympleColors();  

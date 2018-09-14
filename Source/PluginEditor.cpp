@@ -17,7 +17,9 @@ SympleAudioProcessorEditor::SympleAudioProcessorEditor (SympleAudioProcessor& p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (600, 400);
+    setSize (700, 394);
+    osc1Panel.connectSynth(processor.synths[0]);
+    osc2Panel.connectSynth(processor.synths[1]);
     
     osc1GainSlider.setSliderStyle (Slider::SliderStyle::RotaryVerticalDrag);
     osc1GainSlider.setRange(0.0f, 1.0f);
@@ -98,6 +100,9 @@ SympleAudioProcessorEditor::SympleAudioProcessorEditor (SympleAudioProcessor& p)
     osc2ReleaseSlider.setValue (0.5);
     osc2ReleaseSlider.addListener (this);
     addAndMakeVisible (osc2ReleaseSlider);
+
+    addAndMakeVisible(osc1Panel);
+    addAndMakeVisible(osc2Panel);
 }
 
 SympleAudioProcessorEditor::~SympleAudioProcessorEditor()
@@ -117,6 +122,15 @@ void SympleAudioProcessorEditor::paint (Graphics& g)
 
 void SympleAudioProcessorEditor::resized()
 {
+    auto area = getLocalBounds();
+
+    int oscPanelWidth = area.getWidth() / 2;
+    int oscPanelHeight = area.getHeight() / 2;
+
+    osc1Panel.setBounds(0, 0, oscPanelWidth, oscPanelHeight);
+    osc2Panel.setBounds(oscPanelWidth, 0, oscPanelWidth, oscPanelHeight);
+
+    /*
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     osc1GainSlider.setBounds(0, 0, 80, 80);
@@ -134,6 +148,7 @@ void SympleAudioProcessorEditor::resized()
     osc2DecaySlider.setBounds(280, 120, 10, 80);
     osc2SustainSlider.setBounds(300, 120, 10, 80);
     osc2ReleaseSlider.setBounds(320, 120, 10, 80);
+    */
 }
 
 void SympleAudioProcessorEditor::sliderValueChanged(Slider *slider)

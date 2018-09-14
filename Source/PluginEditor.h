@@ -13,6 +13,8 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
 
+#include "OscPanel.h"
+
 //==============================================================================
 /**
 */
@@ -38,6 +40,9 @@ private:
     SympleAudioProcessor& processor;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SympleAudioProcessorEditor)
+
+    OscPanel osc1Panel;
+    OscPanel osc2Panel;
     
     Slider osc1GainSlider;
     Slider osc2GainSlider;
