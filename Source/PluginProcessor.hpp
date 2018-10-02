@@ -12,8 +12,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "Oscillator.h"
-#include "SympleSynth.h"
+#include "Oscillator.hpp"
+#include "SympleSynth.hpp"
 
 //==============================================================================
 /**

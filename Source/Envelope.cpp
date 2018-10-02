@@ -10,7 +10,7 @@
 
 #include <string>
 #include <vector>
-#include "Envelope.h"
+#include "Envelope.hpp"
 
 Envelope::Envelope (double newSampleRate) : minLevel (0.0001),    // multiplier would not work with a 0 level.
                                             currentState (off),
@@ -27,7 +27,7 @@ Envelope::Envelope (double newSampleRate) : minLevel (0.0001),    // multiplier 
   stateValue[EnvelopeState::release] = 1.0;
 }
 
-double Envelope::getNextSample()
+float Envelope::getNextSample()
 {
   if (currentState != EnvelopeState::off && currentState != EnvelopeState::sustain)
   {

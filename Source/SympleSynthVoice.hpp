@@ -12,9 +12,9 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "Envelope.h"
-#include "Oscillator.h"
-#include "SympleSynthSound.h"
+#include "Envelope.hpp"
+#include "Oscillator.hpp"
+#include "SympleSynthSound.hpp"
 
 class SympleSynthVoice : public SynthesiserVoice
 {
@@ -28,10 +28,14 @@ class SympleSynthVoice : public SynthesiserVoice
     void renderNextBlock (AudioBuffer<float> &outputBuffer, int startSample, int numSamples) override;
     void setWaveForm (Oscillator::waveForms wave);
     void setEnvelopeParams (double attack, double decay, double sustain, double release);
+    void setPitchParams (int octave, int semitone);
 
   private:
     Envelope ampEnv;
     Oscillator osc;
-    float frequency;
-    float amp;
+    double frequency = 0.0;
+    float amp = 0.0;
+    int octaveParam;
+    float semitoneParam;
+    float pitchMod;
 };

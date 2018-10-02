@@ -11,9 +11,9 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "PluginProcessor.h"
 
-#include "OscPanel.h"
+#include "OscPanel.hpp"
+#include "PluginProcessor.hpp"
 
 //==============================================================================
 /**

@@ -12,7 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "Oscillator.h"
+#include "Oscillator.hpp"
 
 class SympleSynthSound : public SynthesiserSound
 {

@@ -8,7 +8,7 @@
   ==============================================================================
 */
 
-#include "Oscillator.h"
+#include "Oscillator.hpp"
 
 WaveTables Oscillator::waveTables;
 
@@ -50,7 +50,7 @@ void Oscillator::setWaveForm(waveForms wave)
   }
 }
 
-double Oscillator::getNextSample()
+float Oscillator::getNextSample()
 {
   // currentTable == nullptr -> noise osc
   if(!currentTable)

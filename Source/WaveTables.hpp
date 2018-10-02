@@ -22,10 +22,10 @@ class WaveTables
     AudioSampleBuffer square;
     AudioSampleBuffer triangle;
 
-    int getTableSize();
+    unsigned int getTableSize();
     
   private:
-    unsigned tableSize;
+    unsigned int tableSize;
     void createSine();
     void createSaw();
     void createSquare();

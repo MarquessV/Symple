@@ -9,9 +9,9 @@
 */
 
 #include <iostream>
-#include "SympleSynthVoice.h"
+#include "SympleSynthVoice.hpp"
 
-SympleSynthVoice::SympleSynthVoice() : SynthesiserVoice(), ampEnv (getSampleRate())
+SympleSynthVoice::SympleSynthVoice() : ampEnv (getSampleRate())
 {
 }
 
@@ -19,7 +19,7 @@ void SympleSynthVoice::renderNextBlock (AudioBuffer<float> &outputBuffer, int st
 {
     for (int sample = 0; sample < numSamples; ++sample)
     {
-        double sampleToAdd = osc.getNextSample() * amp * ampEnv.getNextSample();
+        float sampleToAdd = osc.getNextSample() * amp * ampEnv.getNextSample();
         for (int channel = 0; channel < outputBuffer.getNumChannels(); ++channel)
         {
             outputBuffer.addSample (channel, startSample, sampleToAdd);
@@ -60,9 +60,9 @@ void SympleSynthVoice::stopNote (float velocity, bool allowTailOff)
 void SympleSynthVoice::startNote (int midiNoteNumber, float velocity, SynthesiserSound *sound, int currentPitchWheelPosition)
 { 
   ampEnv.enterState (Envelope::EnvelopeState::attack);
-  amp = velocity * 0.15;
-  frequency = MidiMessage::getMidiNoteInHertz (midiNoteNumber);
-  osc.setFrequency(frequency, getSampleRate());
+  amp = velocity * 0.15f;
+  frequency = MidiMessage::getMidiNoteInHertz (midiNoteNumber) * pitchMod;
+  osc.setFrequency(static_cast<double>(frequency), getSampleRate());
 }
 
 void SympleSynthVoice::setWaveForm (Oscillator::waveForms wave)
@@ -79,3 +79,14 @@ bool SympleSynthVoice::canPlaySound (SynthesiserSound *sound)
 { 
   return dynamic_cast<SympleSynthSound*> (sound) != nullptr;
 }
+
+void SympleSynthVoice::setPitchParams(int octave, int semitone)
+{
+  if(octave != octaveParam || semitone != semitoneParam)
+  {
+    octaveParam = octave;
+    semitoneParam = semitone;
+    pitchMod = (octave == 0 ? 1 : 2 << (octave - 1)) * pow(2.0f, semitone / 12.0f);
+  }
+}
+

@@ -12,7 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "SympleSynth.h"
+#include "SympleSynth.hpp"
 
 //==============================================================================
 /*
@@ -33,7 +33,7 @@ public:
 
     void connectSynth(SympleSynth* synth);
 
-    void initRotarySlider(Slider& slider, double minRange, double maxRange, double interval, String suffix);
+    void initRotarySlider(Slider& slider, double minRange, double maxRange, double interval, double defaultValue, String suffix);
 
 private:
     SympleSynth* osc;
@@ -50,6 +50,9 @@ private:
     Label decayLabel;
     Label sustainLabel;
     Label releaseLabel;
+  
+    Slider octave;
+    Slider semitone;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (OscPanel)
 };

@@ -9,8 +9,8 @@
 */
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "OscPanel.h"
-#include "SympleColors.h"
+#include "OscPanel.hpp"
+#include "SympleColors.hpp"
 
 //==============================================================================
 OscPanel::OscPanel()
@@ -26,11 +26,14 @@ OscPanel::OscPanel()
     waveForm.addListener(this);
     addAndMakeVisible(waveForm);
 
-    initRotarySlider(attack, 0.001, 10.0, 0.001, "s");
-    initRotarySlider(decay, 0.001, 10.0, 0.001, "s");
-    initRotarySlider(sustain, 0.001, 1.0, 0.001, "x");
-    initRotarySlider(release, 0.001, 10.0, 0.001, "s");
-    initRotarySlider(gain, 0.0, 1.0, 0.01, "");
+    initRotarySlider(attack, 0.001, 10.0, 0.001, 0.5, "s");
+    initRotarySlider(decay, 0.001, 10.0, 0.001, 0.5, "s");
+    initRotarySlider(sustain, 0.001, 1.0, 0.001, 0.5, "x");
+    initRotarySlider(release, 0.001, 10.0, 0.001, 0.5, "s");
+    initRotarySlider(gain, 0.0, 1.0, 0.01, 1.0, "");
+  
+    initRotarySlider(octave, 0, 6, 1, 0, "o");
+    initRotarySlider(semitone, 0, 12, 1, 0, "st");
 }
 
 OscPanel::~OscPanel()
@@ -85,6 +88,13 @@ void OscPanel::resized()
 
     gain.setBounds(quarter);
     gain.setTopLeftPosition(padding + 3*quarter.getWidth(), 3*padding + 2*quarter.getHeight());
+
+    octave.setBounds(quarter);
+    octave.setTopLeftPosition(2*padding + quarter.getWidth(), padding);
+  
+    semitone.setBounds(quarter);
+    semitone.setTopLeftPosition(2*padding + 2*quarter.getWidth(), padding);
+
 }
 
 void OscPanel::connectSynth(SympleSynth* synth)
@@ -122,10 +132,14 @@ void OscPanel::comboBoxChanged(ComboBox* combobox)
 void OscPanel::sliderValueChanged(Slider* slider)
 {
     if(slider == &attack || slider == &decay || slider == &sustain || slider == &release)
-        osc->setEnvelopeParams(attack.getValue(), decay.getValue(), sustain.getValue(), release.getValue());
+      osc->setEnvelopeParams(attack.getValue(), decay.getValue(), sustain.getValue(), release.getValue());
+    else if(slider == &gain)
+      osc->setAmplitude(gain.getValue());
+    else if(slider == &octave || slider == &semitone)
+      osc->setPitchParams(octave.getValue(), semitone.getValue());
 }
 
-void OscPanel::initRotarySlider(Slider& slider, double minRange, double maxRange, double interval, String suffix)
+void OscPanel::initRotarySlider(Slider& slider, double minRange, double maxRange, double interval, double defaultValue, String suffix)
 {
     slider.setSliderStyle(Slider::SliderStyle::RotaryHorizontalVerticalDrag);
     slider.setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxLeft, false, 42, 14);
@@ -134,7 +148,7 @@ void OscPanel::initRotarySlider(Slider& slider, double minRange, double maxRange
     slider.setColour(Slider::ColourIds::rotarySliderOutlineColourId, SympleColors::tint);
     slider.setColour(Slider::ColourIds::thumbColourId, SympleColors::dark_blue);
     slider.setRange (minRange, maxRange, interval);
-    slider.setValue (0.5);
+    slider.setValue (defaultValue);
     slider.addListener (this);
     addAndMakeVisible (slider);
 }

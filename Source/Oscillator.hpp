@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "WaveTables.h"
+#include "WaveTables.hpp"
 
 class Oscillator
 {
@@ -19,7 +19,7 @@ class Oscillator
     void setFrequency (double frequency, double sampleRate);
     enum waveForms {sine, saw, triangle, square, noise};
     void setWaveForm (waveForms wave);
-    double getNextSample();
+    float getNextSample();
 
   private:
     double currFrequency;

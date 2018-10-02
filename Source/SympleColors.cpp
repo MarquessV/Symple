@@ -8,7 +8,7 @@
   ==============================================================================
 */
 
-#include "SympleColors.h"
+#include "SympleColors.hpp"
 
 const Colour SympleColors::background (0xFF2F2D2E);
 const Colour SympleColors::foreground (0xFFFFFFFF);

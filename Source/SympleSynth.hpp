@@ -12,7 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "Oscillator.h"
+#include "Oscillator.hpp"
 
 struct SympleSynthParams
 {
@@ -29,6 +29,8 @@ class SympleSynth : public Synthesiser
     void setAmplitude (float amplitude);
 
     void setEnvelopeParams(double attack, double decay, double sustain, double release);
+  
+    void setPitchParams(int octave, int semitone);
 
   private:
     SympleSynthParams params;

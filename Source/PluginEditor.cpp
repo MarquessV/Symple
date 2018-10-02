@@ -8,10 +8,10 @@
   ==============================================================================
 */
 
-#include "PluginProcessor.h"
-#include "PluginEditor.h"
+#include "PluginProcessor.hpp"
+#include "PluginEditor.hpp"
 
-#include "SympleColors.h"
+#include "SympleColors.hpp"
 
 //==============================================================================
 SympleAudioProcessorEditor::SympleAudioProcessorEditor (SympleAudioProcessor& p)

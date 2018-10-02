@@ -8,7 +8,7 @@
   ==============================================================================
 */
 
-#include "WaveTables.h"
+#include "WaveTables.hpp"
 
 WaveTables::WaveTables()
 {
@@ -21,7 +21,7 @@ WaveTables::WaveTables()
 
 void WaveTables::createSine()
 {
-  sine.setSize (1, tableSize + 1);
+  sine.setSize (1u, static_cast<int>(tableSize + 1u));
   auto* samples = sine.getWritePointer (0);
 
   double delta = MathConstants<double>::twoPi / static_cast<double> (tableSize - 1);
@@ -30,7 +30,7 @@ void WaveTables::createSine()
   for (unsigned i = 0; i < tableSize; ++i)
   {
     double sample = std::sin(angle);
-    samples[i] = static_cast<double> (sample);
+    samples[i] = static_cast<float> (sample);
     angle += delta;
   }
 
@@ -39,18 +39,18 @@ void WaveTables::createSine()
 
 void WaveTables::createSaw()
 {
-  saw.setSize (1, tableSize + 1);
+  saw.setSize (1, static_cast<int>(tableSize + 1));
   auto* samples = saw.getWritePointer (0);
   int half = tableSize / 2;
   for (int i = 0; i < half; ++i)
   {
-    samples[i] = static_cast<double> (i) / half - 1.0;
+    samples[i] = static_cast<float> (i) / half - 1.0f;
   }
 }
 
 void WaveTables::createSquare()
 {
-  square.setSize (1, tableSize + 1);
+  square.setSize (1, static_cast<int>(tableSize + 1));
   auto* samples = square.getWritePointer (0);
   int half = tableSize / 2;
   for (int i = 0; i < half; ++i)
@@ -62,19 +62,19 @@ void WaveTables::createSquare()
 
 void WaveTables::createTriangle()
 {
-  triangle.setSize (1, tableSize + 1);
+  triangle.setSize (1, static_cast<int>(tableSize + 1));
   auto* samples = triangle.getWritePointer (0);
   int half = tableSize / 2;
-  double delta = 2.0 / tableSize;
+  float delta = 2.0f / tableSize;
   for (int i = 0; i < half; ++i)
   {
-    double diff = i * delta;
-    samples[i] = -1.0 + diff;
-    samples[tableSize - i] = samples[i];
+    float diff = i * delta;
+    samples[i] = -1.0f + diff;
+    samples[static_cast<int>(tableSize) - i] = samples[i];
   }
 }
 
-int WaveTables::getTableSize()
+unsigned int WaveTables::getTableSize()
 {
   return tableSize;
 }

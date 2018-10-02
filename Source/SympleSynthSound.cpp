@@ -8,7 +8,7 @@
   ==============================================================================
 */
 
-#include "SympleSynthSound.h"
+#include "SympleSynthSound.hpp"
 
 bool SympleSynthSound::appliesToNote(int note)
 {

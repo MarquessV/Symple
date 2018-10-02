@@ -26,7 +26,7 @@ class Envelope
     };
 
     Envelope (double newSampleRate);
-    double getNextSample();
+    float getNextSample();
     EnvelopeState getState() const;
     void enterState (EnvelopeState newState);
     void setSampleRate (double newSampleRate);

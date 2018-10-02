@@ -8,11 +8,11 @@
   ==============================================================================
 */
 
-#include "PluginProcessor.h"
-#include "PluginEditor.h"
-#include "SympleSynthSound.h"
-#include "SympleSynthVoice.h"
-#include "Oscillator.h"
+#include "PluginProcessor.hpp"
+#include "PluginEditor.hpp"
+#include "SympleSynthSound.hpp"
+#include "SympleSynthVoice.hpp"
+#include "Oscillator.hpp"
 
 //==============================================================================
 SympleAudioProcessor::SympleAudioProcessor()

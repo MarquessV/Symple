@@ -8,8 +8,8 @@
   ==============================================================================
 */
 
-#include "SympleSynth.h"
-#include "SympleSynthVoice.h"
+#include "SympleSynth.hpp"
+#include "SympleSynthVoice.hpp"
 
 void SympleSynth::renderNextBlock (AudioBuffer<float>& outputAudio, const MidiBuffer& inputMidi, int startSample, int numSamples)
 {
@@ -39,3 +39,12 @@ void SympleSynth::setEnvelopeParams (double attack, double decay, double sustain
     voice->setEnvelopeParams(attack, decay, sustain, release);
   }
 }
+
+void SympleSynth::setPitchParams(int octave, int semitone) { 
+  for (int i = 0; i < getNumVoices(); ++i)
+  {
+    SympleSynthVoice* voice = dynamic_cast<SympleSynthVoice*> (getVoice(i));
+    voice->setPitchParams(octave, semitone);
+  }
+}
+
