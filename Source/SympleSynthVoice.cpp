@@ -11,7 +11,7 @@
 #include <iostream>
 #include "SympleSynthVoice.hpp"
 
-SympleSynthVoice::SympleSynthVoice() : ampEnv (getSampleRate())
+SympleSynthVoice::SympleSynthVoice() : ampEnv (getSampleRate()), pitchMod(1)
 {
 }
 
@@ -39,12 +39,12 @@ void SympleSynthVoice::controllerMoved (int controllerNumber, int newControllerV
 
 
 void SympleSynthVoice::pitchWheelMoved (int newPitchWheelValue)
-{ 
+{
 }
 
 
 void SympleSynthVoice::stopNote (float velocity, bool allowTailOff)
-{ 
+{
   if (allowTailOff)
   {
     ampEnv.enterState (Envelope::EnvelopeState::release);
@@ -58,7 +58,7 @@ void SympleSynthVoice::stopNote (float velocity, bool allowTailOff)
 
 
 void SympleSynthVoice::startNote (int midiNoteNumber, float velocity, SynthesiserSound *sound, int currentPitchWheelPosition)
-{ 
+{
   ampEnv.enterState (Envelope::EnvelopeState::attack);
   amp = velocity * 0.15f;
   frequency = MidiMessage::getMidiNoteInHertz (midiNoteNumber) * pitchMod;
