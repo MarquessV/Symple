@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FILTERGRAPH>
-  <FILTER uid="1" x="0.50000000000000000000" y="0.10000000000000000555">
-    <PLUGIN name="Audio Input" descriptiveName="" format="Internal" category="I/O devices"
-            manufacturer="ROLI Ltd." version="1.0" file="" uid="246006c0"
-            isInstrument="0" fileTime="0" infoUpdateTime="0" numInputs="0"
-            numOutputs="2" isShell="0"/>
-    <STATE>0.</STATE>
-    <LAYOUT>
-      <INPUTS>
-        <BUS index="0" layout="disabled"/>
-      </INPUTS>
-      <OUTPUTS>
-        <BUS index="0" layout="disabled"/>
-      </OUTPUTS>
-    </LAYOUT>
-  </FILTER>
   <FILTER uid="2" x="0.25000000000000000000" y="0.10000000000000000555">
     <PLUGIN name="Midi Input" descriptiveName="" format="Internal" category="I/O devices"
             manufacturer="ROLI Ltd." version="1.0" file="" uid="cb5fde0b"
@@ -34,7 +19,7 @@
   <FILTER uid="3" x="0.50000000000000000000" y="0.90000000000000002220">
     <PLUGIN name="Audio Output" descriptiveName="" format="Internal" category="I/O devices"
             manufacturer="ROLI Ltd." version="1.0" file="" uid="724248cb"
-            isInstrument="0" fileTime="0" infoUpdateTime="0" numInputs="0"
+            isInstrument="0" fileTime="0" infoUpdateTime="0" numInputs="2"
             numOutputs="0" isShell="0"/>
     <STATE>0.</STATE>
     <LAYOUT>
@@ -49,9 +34,9 @@
   <FILTER uid="4" x="0.32638888888888889506" y="0.47680412371134023308">
     <PLUGIN name="Symple" format="VST" category="Synth" manufacturer="MarquessV"
             version="1.0.0.0" file="/Users/marquess/Library/Audio/Plug-Ins/VST/Symple.vst"
-            uid="4c677573" isInstrument="1" fileTime="165023cba78" infoUpdateTime="165023cfe0a"
+            uid="56636b67" isInstrument="1" fileTime="166371f92a0" infoUpdateTime="1663b644338"
             numInputs="0" numOutputs="2" isShell="0"/>
-    <STATE>160.CMlaKA....fQBMDZ....AvzY0MG.A.......A.................................................................................................................................................................................</STATE>
+    <STATE>160.CMlaKA....fQBMDZ....AX0XqcF.A.......A.................................................................................................................................................................................</STATE>
     <LAYOUT>
       <INPUTS/>
       <OUTPUTS>
