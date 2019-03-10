@@ -3,3 +3,9 @@
 Builds/MacOSX/build/
 xcuserdata/
 build
+.clang_complete
+tags*
+/Symple*
+libSymple.a
+/CMake*
+/cmake_install.cmake

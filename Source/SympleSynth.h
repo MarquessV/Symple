@@ -1,11 +1,11 @@
 /*
   ==============================================================================
 
-    Oscillator.cpp
-    Created: 10 Mar 2019 11:51:48am
+    SympleSynth.h
+    Created: 10 Mar 2019 11:51:33am
     Author:  Marquess Valdez
 
   ==============================================================================
 */
 
-#include "Oscillator.h"
+#pragma once

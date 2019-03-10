@@ -12,18 +12,15 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "Oscillator.hpp"
-#include "SympleSynth.hpp"
-
 //==============================================================================
 /**
 */
-class SympleAudioProcessor  : public AudioProcessor
+class NewProjectAudioProcessor  : public AudioProcessor
 {
 public:
     //==============================================================================
-    SympleAudioProcessor();
-    ~SympleAudioProcessor();
+    NewProjectAudioProcessor();
+    ~NewProjectAudioProcessor();
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -58,17 +55,7 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    OwnedArray<SympleSynth> synths;
 private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SympleAudioProcessor)
-
-    SympleSynth synth1;
-    SympleSynth synth2;
-
-
-    double lastSampleRate;
-
-    int numSynths;
-    int numVoices;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessor)
 };
