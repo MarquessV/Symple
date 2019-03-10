@@ -15,21 +15,20 @@
 
 //==============================================================================
 /**
-*/
-class NewProjectAudioProcessorEditor  : public AudioProcessorEditor
-{
+ */
+class SympleAudioProcessorEditor : public AudioProcessorEditor {
 public:
-    NewProjectAudioProcessorEditor (NewProjectAudioProcessor&);
-    ~NewProjectAudioProcessorEditor();
+  SympleAudioProcessorEditor(SympleAudioProcessor &);
+  ~SympleAudioProcessorEditor();
 
-    //==============================================================================
-    void paint (Graphics&) override;
-    void resized() override;
+  //==============================================================================
+  void paint(Graphics &) override;
+  void resized() override;
 
 private:
-    // This reference is provided as a quick way for your editor to
-    // access the processor object that created it.
-    NewProjectAudioProcessor& processor;
+  // This reference is provided as a quick way for your editor to
+  // access the processor object that created it.
+  SympleAudioProcessor &processor;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessorEditor)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SympleAudioProcessorEditor)
 };
