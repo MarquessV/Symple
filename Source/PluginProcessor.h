@@ -10,6 +10,8 @@
 
 #pragma once
 
+typedef float floatType;
+
 #include "../JuceLibraryCode/JuceHeader.h"
 
 //==============================================================================
@@ -29,7 +31,7 @@ public:
   bool isBusesLayoutSupported(const BusesLayout &layouts) const override;
 #endif
 
-  void processBlock(AudioBuffer<float> &, MidiBuffer &) override;
+  void processBlock(AudioBuffer<floatType> &, MidiBuffer &) override;
 
   //==============================================================================
   AudioProcessorEditor *createEditor() override;

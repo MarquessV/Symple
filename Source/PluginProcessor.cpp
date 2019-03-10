@@ -108,7 +108,7 @@ bool SympleAudioProcessor::isBusesLayoutSupported(
 }
 #endif
 
-void SympleAudioProcessor::processBlock(AudioBuffer<float> &buffer,
+void SympleAudioProcessor::processBlock(AudioBuffer<floatType> &buffer,
                                         MidiBuffer &midiMessages) {
   ScopedNoDenormals noDenormals;
   auto totalNumInputChannels = getTotalNumInputChannels();
